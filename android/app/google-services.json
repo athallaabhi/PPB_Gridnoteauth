@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "977755504335",
+    "project_id": "pbbfirebase-1a010",
+    "storage_bucket": "pbbfirebase-1a010.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977755504335:android:577c2fd3e601b3ec8741ba",
+        "android_client_info": {
+          "package_name": "com.weynard02.crud_local_database_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9afsae090A4dtxCNXrKFcs1pMXqxsQ2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
