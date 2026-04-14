@@ -1,5 +1,4 @@
-// pages/notes_page.dart
-
+﻿
 import 'package:crud_local_database_app/models/note.dart';
 import 'package:crud_local_database_app/models/note_database.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ class NotesPage extends StatefulWidget {
 }
 
 class _NotesPageState extends State<NotesPage> {
-  // text controller to access what the user typed
   final textController = TextEditingController();
 
   @override
@@ -22,7 +20,6 @@ class _NotesPageState extends State<NotesPage> {
     readNotes();
   }
 
-  // create a note
   void createNote() {
     showDialog(
       context: context,
@@ -33,10 +30,8 @@ class _NotesPageState extends State<NotesPage> {
         actions: [
           MaterialButton(
             onPressed: () {
-              // add to db
               context.read<NoteDatabase>().addNote(textController.text);
 
-              // clear controller
               textController.clear();
 
               Navigator.pop(context);
@@ -48,12 +43,10 @@ class _NotesPageState extends State<NotesPage> {
     );
   }
 
-  // read notes
   void readNotes() {
     context.read<NoteDatabase>().fetchNotes(); // Use read instead of watch
   }
 
-  // update a note
   void updateNote(Note note) {
     textController.text = note.text;
     showDialog(
@@ -67,7 +60,6 @@ class _NotesPageState extends State<NotesPage> {
                       context
                           .read<NoteDatabase>()
                           .updateNote(note.id, textController.text);
-                      // clear controller
                       textController.clear();
 
                       Navigator.pop(context);
@@ -77,17 +69,14 @@ class _NotesPageState extends State<NotesPage> {
             ));
   }
 
-  // delete a note
   void deleteNote(int id) {
     context.read<NoteDatabase>().deleteNote(id);
   }
 
   @override
   Widget build(BuildContext context) {
-    // note database
     final noteDatabase = context.watch<NoteDatabase>();
 
-    // current notes
     List<Note> currentNotes = noteDatabase.currentNotes;
 
     return Scaffold(
@@ -99,20 +88,16 @@ class _NotesPageState extends State<NotesPage> {
         body: ListView.builder(
           itemCount: currentNotes.length,
           itemBuilder: (context, index) {
-            // get individual note
             final note = currentNotes[index];
 
-            // list tile UI
             return ListTile(
               title: Text(note.text),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // edit button
                   IconButton(
                       onPressed: () => updateNote(note),
                       icon: const Icon(Icons.edit)),
-                  // delete button
                   IconButton(
                       onPressed: () => deleteNote(note.id),
                       icon: const Icon(Icons.delete))

@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'firestore.dart';
@@ -49,12 +49,16 @@ class _HomePageState extends State<HomePage> {
                   firestoreService.addNote(
                     titleTextController.text,
                     contentTextController.text,
+                    DateTime.now(),
+                    '',
                   );
                 } else {
                   firestoreService.updateNote(
                     docId,
                     titleTextController.text,
                     contentTextController.text,
+                    DateTime.now(),
+                    '',
                   );
                 }
                 titleTextController.clear();
